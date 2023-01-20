@@ -12,3 +12,10 @@ Dies befindet sich in der ARE und es erlaubt den Benutzer den Laptop per Kopfbew
 Es erlaubt mehrere Geräte, von unterschiedlichen Anbietern miteinander zu verknüpfen.
 ### FABI (Flexible Assistive Button Interface)
 Es ist eine Box, wo man zum Beispielhaft bis zu neun Knopfe anstecken kann, um etwas zu Steuern. Dies wird dann auf der [FABI Configuration](https://fabi.asterics.eu/index_fabi.html) Webseite eingestellt, also was welcher Knopf tun soll.
+### ACS (AsTeRICS Configuration Suite)
+Mit diesem Programm können mehrere Dinge ausgewählt werden, zum Beispiel die Maus mit dem Kopf steuern, Infrarot Signale empfangen und verarbeiten oder sogar openHAB einbinden.
+### ARE (AsTeRICS Runtime Environment)
+Dies wird benötigt, um ACS verwenden zu können. Hier wird tatsächlich dann, was im ACS simuliert werden soll, ausgeführt.
+### AsTeRICS Grid
+Dies erlaubt Menschen, die gehörlos, Stumm oder eine andere Sprache sprechen, bildlich zu kommunizieren. Es können mehrere Kategorien ausgesucht werden, also zum Beispiel Über mich, Körper oder Hilfe. Im Fall von Über mich wäre dann das zu sehen, wenn man draufklicken würde:
+![AsTeRICS Grid Example](img/ExampleGrid.png)
