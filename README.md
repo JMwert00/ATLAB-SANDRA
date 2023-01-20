@@ -18,24 +18,24 @@ Mit diesem Programm können mehrere Dinge ausgewählt werden, zum Beispiel die M
 Dies wird benötigt, um ACS verwenden zu können. Hier wird tatsächlich dann, was im ACS simuliert werden soll, ausgeführt.
 ### AsTeRICS Grid
 Dies erlaubt Menschen, die gehörlos, Stumm oder eine andere Sprache sprechen, bildlich zu kommunizieren. Es können mehrere Kategorien ausgesucht werden, also zum Beispiel Über mich, Körper oder Hilfe. Im Fall von Über mich wäre dann das zu sehen, wenn man draufklicken würde:
-![AsTeRICS Grid Example](img/ExampleGrid.png)
+>![AsTeRICS Grid Example](img/ExampleGrid.png)
 ## Steuerung
 ### Glühbirne
 Sein Wunsch ist es die Umgebung steuern zu können. In unserem Fall kann eine Glühbirne betätigt werden, sprich ein, aus, rot, grün oder blau sein. Dies wurde am Anfang mit einem [IRTrans Programm](https://www.irtrans.de/de/download/windows.php) mit der Glühbirne verbunden. Weiter dann mit ACS (wobei ARE laufen muss), welches dann mit [AsTeRICS Grid](https://grid.asterics.eu/) verbunden wurde. Mittels CameraMouse kann letztendlich die Glühbirne gesteuert werden.
 #### Detaillierter
 Nachdem IRTrans heruntergeladen wurde, kann man dann eine Datei namens IRTransServer öffnen, dann GUIClient, welches sich im selben Ordner befindet. Dann ist folgendes zu sehen:
-![IRTrans GUI](img/IrTransGui.png)
+>![IRTrans GUI](img/IrTransGui.png)
 Es besteht dann die Möglichkeit der Glühbirne Befehle beizubringen oder Befehle zu senden. Beibringen funktioniert folgendermaßen.
-![IRTrans Gui One and Two](img/IrTranOt.png) ![IRTrans Gui Three and Four](img/IrTranTf.png)
+>![IRTrans Gui One and Two](img/IrTranOt.png) ![IRTrans Gui Three and Four](img/IrTranTf.png)
 Beim 5. Schritt ist dann die Farbe bzw. der Zustand, auf der Fernbedienung, von der Glühbirne einzugeben.
 Um dies mit ACS zu verknüpfen, muss man folgendes machen.
-![ACS1](img/ACS1.png) ![ACS2](img/ACS2.png)
+>![ACS1](img/ACS1.png) ![ACS2](img/ACS2.png)
 prestring: snd (send) lightbulb (so heißt es).
 send n: Welcher Befehl ausgewählt werden soll.
 Um dies mit AsTeRICS Grid zu verknüpfen, ist dann ein Grid anzulegen und ein neues Element und Bearbeitungsmodus soll währenddessen aktiviert sein. Um einen Befehl (zB. Rot) per AsTeRICS Grid einzugeben, ist dann dies zu machen:
-![Grid Connect](img/GridConnect.png)
+>![Grid Connect](img/GridConnect.png)
 Vor schritt 5 ist zu vermerken, dass das ACS und ARE Datei offen und rennen sollen. Bei 7 ist dann der Befehl einzugeben. Vordem es dann angeschaltet werden kann, muss Bearbeitungsmodus beendet werden.
 Dies ist im ACS auszuwählen, wenn eine Datei schon existiert.
-![Exist](img/Exist.png)
+>![Exist](img/Exist.png)
 ### Jalousien
 Jalousien steuern ist auch möglich, durch (openHAB).
