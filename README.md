@@ -1,41 +1,63 @@
 # ATLab Küchensteuerung für Gerald
 
 ## Über Gerald
-Er kann den rechten Arm leicht heben bzw. senken, Handfunktion ist aber nicht vorhanden. Die große linke Zehe, Kopf, Mund/Lippen und Augen können bestätigt werden, als auch non-verbale Funktionalitäten sind vorhanden.
+Er kann den rechten Arm leicht heben bzw. senken, die Handfunktion ist aber nicht vorhanden. Die große linke Zehe, Kopf, Mund/Lippen und Augen können vom Patienten verwendet werden und es sind non-verbale Funktionalitäten vorhanden.
 ## Verwendete Komponenten
-Licht (FABI), Jalousien (ARE, ACS, Kitchen Webseite mit openHAB verknüpft) und Glühbirne (IRTrans, ACS, ARE, AsTeRICS Grid) können gesteuert werden. Bis auf das Licht wird alles mit der CameraMouse gesteuert.
+Die Umgebungssteuerung wird mit folgenden Komponenten möglich: FABI, Asterics Runtime Environment (ARE), Asterics Configuration Suite(ACS), Asterics Grid  und OpenHAB.
+Licht (FABI), Jalousien (ARE, ACS, Kitchen Webseite mit openHAB verknüpft) und eine Glühbirne (IRTrans, ACS, ARE, AsTeRICS Grid) die gesteuert werden können.
 ### FlipMouse
-In unserem Fall wird es dieselbe Funktionalität haben wie der FABI, also anstatt von einem Teil zu haben, wo man Sachen mit dem Mund steuern kann, wird bei uns ein Knopf verwendet.
+Die Flip Mouse wird mit einem Button als Eingabemöglichkeit simuliert und hat dieselbe Funktionalität wie der FABI.
 ### CameraMouse
-Dies befindet sich in der ARE und es erlaubt den Benutzer den Laptop per Kopfbewegung zu steuern. Um es gut verwenden zu können, muss man allerdings viel Übung haben.
+Da der Patient nur den rechten Arm leicht heben und senken kann wird eine Maussteuerung mit dem Kopf als Lösungsansatz verwendet.  Dies befindet sich in der ARE und es erlaubt dem Benutzer den Laptop per Kopfbewegung anzusteuern. Ein Mausklick wird durch ein verweilen auf derselben Stelle ausgelöst, sollte ein Doppelklick, das Ziehen des Mauszeigers oder ein Rechtsklick notwendig sein kann dies im Camera Mouse Menu ausgewählt werden.
+![Abbildung 1 Camera Mouse Menu](img/cameraMouse.png)
 ### openHAB (open Home Automation Bus)
-Es erlaubt mehrere Geräte, von unterschiedlichen Anbietern miteinander zu verknüpfen.
-### FABI (Flexible Assistive Button Interface)
-Es ist eine Box, wo man zum Beispielhaft bis zu neun Knopfe anstecken kann, um etwas zu Steuern. Dies wird dann auf der [FABI Configuration](https://fabi.asterics.eu/index_fabi.htm) Webseite eingestellt, also was welcher Knopf tun soll.
+Es erlaubt mehrere Geräte, von unterschiedlichen Anbietern miteinander zu verknüpfen mit dem Ziel der Automatisierung im Smart Home Bereich.
+### FABI (Flexible Assistive Button Interface): https://www.asterics-foundation.org/projekte-2/fabi/
+FABI dient als alternative Schnittstelle für Menschen mit körperlichen Beeinträchtigung und ermöglicht den Input mit Knöpfen zu lösen. An einen FABI können bis zu neun Knöpfe angeschlossen werden die mit unterschiedlichen Funktionen auf der [FABI Configuration](https://fabi.asterics.eu/index_fabi.htm) Webseite eingestellt werden, unter anderem die normalen Mausfunktionen sowie das Scanning von Reihen und Spalten, da den Knöpfen eine Bewegungssteuerung fehlt.
 ### ACS (AsTeRICS Configuration Suite)
-Mit diesem Programm können mehrere Dinge ausgewählt werden, zum Beispiel die Maus mit dem Kopf steuern, Infrarot Signale empfangen und verarbeiten oder sogar openHAB einbinden.
-### ARE (AsTeRICS Runtime Environment)
+Bei der ACS wird mithilfe von vorgefertigten Blöcken programmiert, diese sind in folgende Kategorien unterteilt: Sensors, Processors and Actuators.  ProACS ermöglicht das Erstellen von Modellen, die Komponenten des Computers zu Hilfsmitteln in der barrierefreien Bedienung machen und für Menschen mit körperlichen Einschränkungen nutzbar machen. Die erstellten Modelle können dann in der ARE ausgeführt werden.### ARE (AsTeRICS Runtime Environment)
 Dies wird benötigt, um ACS verwenden zu können. Hier wird tatsächlich dann, was im ACS simuliert werden soll, ausgeführt.
-### AsTeRICS Grid
-Dies erlaubt Menschen, die gehörlos, Stumm oder eine andere Sprache sprechen, bildlich zu kommunizieren. Es können mehrere Kategorien ausgesucht werden, also zum Beispiel Über mich, Körper oder Hilfe. Im Fall von Über mich wäre dann das zu sehen, wenn man draufklicken würde:
->![AsTeRICS Grid Example](img/ExampleGrid.png)
-## Steuerung
-### Glühbirne
-Sein Wunsch ist es die Umgebung steuern zu können. In unserem Fall kann eine Glühbirne betätigt werden, sprich ein, aus, rot, grün oder blau sein. Dies wurde am Anfang mit einem [IRTrans Programm](https://www.irtrans.de/de/download/windows.php) mit der Glühbirne verbunden. Weiter dann mit ACS (wobei ARE laufen muss), welches dann mit [AsTeRICS Grid](https://grid.asterics.eu/) verbunden wurde. Mittels CameraMouse kann letztendlich die Glühbirne gesteuert werden.
-#### Detaillierter
-Nachdem IRTrans heruntergeladen wurde, kann man dann eine Datei namens IRTransServer öffnen, dann GUIClient, welches sich im selben Ordner befindet. Dann ist folgendes zu sehen:
->![IRTrans GUI](img/IrTransGui.png)
-Es besteht dann die Möglichkeit der Glühbirne Befehle beizubringen oder Befehle zu senden. Beibringen funktioniert folgendermaßen.
->![IRTrans Gui One and Two](img/IrTranOt.png) ![IRTrans Gui Three and Four](img/IrTranTf.png)
-Beim 5. Schritt ist dann die Farbe bzw. der Zustand, auf der Fernbedienung, von der Glühbirne einzugeben.
-Um dies mit ACS zu verknüpfen, muss man folgendes machen.
->![ACS1](img/ACS1.png) ![ACS2](img/ACS2.png)
-prestring: snd (send) lightbulb (so heißt es).
-send n: Welcher Befehl ausgewählt werden soll.
+![Abbildung 2 ACS Menuleiste](img/menuLeisteACS.png)
+![Abbildung 3 ACS IRTrans Modell](img/IRTransModell.png)
+![Abbildung 4 ACS GUI Designer](img/ACSGui.png)
+### ARE (AsTeRICS Runtime Environment)
+Dies wird benötigt, um ACS verwenden zu können. Hier wird dann das im ACS erstellte Modell ausgeführt, mit dem der Benutzer interagieren kann, ausgeführt.
+AsTeRICS Grid:
+Dies erlaubt Menschen, die gehörlos, stumm sind oder eine andere Sprache sprechen, bildlich zu kommunizieren. Die Anwendung ist kostenlos und es gibt viele Vorlagen im Internet auf die man zurückgreifen kann und die Möglichkeit eigene Grids zu erstellen. Es können mehrere Kategorien ausgesucht werden, also z.B. „Über mich“, „Körper“ oder „Hilfe“. Drückt man auf das Feld „Über mich“ öffnet sich ein weiteres Gitternetz:
+![Abbildung 5 Beispielgrid Asterics Grid](img/BspGrid.png)
+### LED-Glühbirne
+Über Asterics Grid kann der Patient die Stimmungsbeleuchtung steuern. In der ACS wurde ein fertiges IRTrans Modell ausgewählt und mit der ARE verbunden. Für die Steuerung der LED  wird dem IRTrans-Modul die Funktion der IR-Fernbedienung beigebracht und gespeichert. Das Asterics Grid ist fähig andere Asterics Framework Aktionen auszuführen und dabei ACS Modelle zu verwenden.
+![Abbildung 6 Lösungsansatz Grid](img/LösungGrid.png)
+![Abbildung 7 Zelle in Asterics Grid bearbeiten und Aktion konfigurieren](img/AstericsConfig.png)
+![Abbildung 8 Zelle für IRTrans bearbeiten](img/ZelleIR.png)
+### IRTrans
+Nachdem IRTrans heruntergeladen wurde, wurden die Anwendungen IRTransServer und GUIClient ausgeführt.
+![Abbildung 9 IRTrans GUI](img/IRGui.png)
+Es besteht dann die Möglichkeit der Glühbirne Befehle beizubringen oder Befehle zu senden.
+![Abbildung 10 IRTrans Konfiguration](img/IRConfig.png)
+![Abbildung 11 Befehl lernen](img/BefehlLernen.png)
+Anschließend müssen der Zustand und die Farbe die man mit der Fernbedienung ausgewählt hat eingeben werden.
+Dies kann in ACS folgendermaßen umgesetzt werden:
+![ACS properties eines Moduls](img/ACSZelle.png)
+prestring: snd lightbulb,
 Um dies mit AsTeRICS Grid zu verknüpfen, ist dann ein Grid anzulegen und ein neues Element und Bearbeitungsmodus soll währenddessen aktiviert sein. Um einen Befehl (zB. Rot) per AsTeRICS Grid einzugeben, ist dann dies zu machen:
->![Grid Connect](img/GridConnect.png)
-Vor schritt 5 ist zu vermerken, dass das ACS und ARE Datei offen und rennen sollen. Bei 7 ist dann der Befehl einzugeben. Vordem es dann angeschaltet werden kann, muss Bearbeitungsmodus beendet werden.
-Dies ist im ACS auszuwählen, wenn eine Datei schon existiert.
->![Exist](img/Exist.png)
 ### Jalousien
-Jalousien steuern ist auch möglich, durch (openHAB).
+Sodass es im AsTeRICS Grid betätigt werden kann, müssen im ACS folgende Einstellungen durchgeführt werden.
+![Button Grid Modul](img/ModulButt.png) ![Button Grid Modul Properties](img/ModulButtProp.png)
+![String Dispatcher](img/StringDispatch.png) ![String Dispatcher Properties](img/StringDispatchProp.png)
+Letztendlich ist es: <Was verändert werden soll>_<GF>_<Wo>,  <Zustand>
+Dasselbe wird auch für das Licht und das Licht unter dem Tisch gemacht. Hier (StringDispatcher.1) wird verarbeitet, was aus ButtonGrid.1 kommt.
+## FittsTask2D
+Dieses Programm wird normalerweise verwendet, um menschliche Bewegungen durch ein Modell vorherzusagen. In einem Versuch sind 5 Kreise in einem Stern Muster angeordnet die Versuchsperson soll mit einer leichten Kopfbewegung den jeweils fett markierten Kreis anschauen (wird durch den Mauszeiger gekennzeichnet) bis alle fünf Kreise verbunden sind. Es wurde hierfür die CameraMouse verwendet. Am Ende kann man dann sehen, wie lange man gebraucht hat und wie genau der Weg zum nächsten Kreis war. Throughput sagt an, wie genau und schnell die Person beim Erwischen der Kugeln war. Je höher der Wert, desto besser. Es kommen jetzt die besten und schlechtesten Throughput Werte zu sehen.
+Schlechteste throughput Wert:
+![Abbildung 12 Auswertung Versuch 1](img/Auswertung1.png)
+![Abbildung 13 FittsTask Stern](img/FittsStern.png)
+Dies hat einen schlechteren Throughput, weil es nicht so einen smoothen Übergang zu den nächsten Kreisen hat. Wie in dem Bild zu sehen ist.
+Beste throughput Wert:
+![Abbildung 14 Auswertung Versuch 2](img/Auswertung2.png)
+![Abbildung 15 2.Versuch](img/V2.png)
+Bei diesem Bild ist ein genauerer Übergang zwischen den Kreisen zu sehen.
+## Schwierigkeiten bei der Umsetzung und Fehlersuche:
+openHAB: Zeitweise gab es Ausfälle der Website die unabhängig voneinander festgestellt und reproduziert werden konnten oder Navigationsfehler z.B. zurück führt nicht zum vorherigen Menu zurück sondern springt wieder auf die Google Startseite zurück, daher wurde im Lösungsansatz fast ausschließlich nur auf Asterics gesetzt.
+Asterics(ACS, ARE, Grid): Beim Ausführen eines neuen Modells in der ARE wird nachgefragt ob das lokale Modell überschrieben werden soll, was am Anfang eine Lösung überschrieben hat. Wenig weiterführendes Material oder nur sehr grundlegende Lösungen. Beim Versuch 2 funktionierende Modelle in ein acs File zusammenzuführen hat die resultierende Anwendung nicht funktioniert, daher werden bei der Lösung beide separate Dateien angewendet.
+Zeitprobleme + Koordinierungsprobleme + Verständnisprobleme
