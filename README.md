@@ -108,6 +108,8 @@ Bei diesem Bild ist ein genauerer Übergang zwischen den Kreisen zu sehen.
 
 ## Schwierigkeiten bei der Umsetzung und Fehlersuche:
 
-openHAB: Zeitweise gab es Ausfälle der Website die unabhängig voneinander festgestellt und reproduziert werden konnten oder Navigationsfehler z.B. zurück führt nicht zum vorherigen Menu zurück sondern springt wieder auf die Google Startseite zurück, daher wurde im Lösungsansatz fast ausschließlich nur auf Asterics gesetzt.
+openHAB: Zeitweise gab es Ausfälle der Website die unabhängig voneinander festgestellt und reproduziert werden konnten oder Navigationsfehler z.B. zurück führt nicht zum vorherigen Menu zurück sondern springt wieder auf die Google Startseite zurück,   daher wurde im Lösungsansatz fast ausschließlich nur auf Asterics gesetzt.
+
 Asterics(ACS, ARE, Grid): Beim Ausführen eines neuen Modells in der ARE wird nachgefragt ob das lokale Modell überschrieben werden soll, was am Anfang eine Lösung überschrieben hat. Wenig weiterführendes Material oder nur sehr grundlegende Lösungen. Beim Versuch 2 funktionierende Modelle in ein acs File zusammenzuführen hat die resultierende Anwendung nicht funktioniert, daher werden bei der Lösung beide separate Dateien angewendet.
+
 Zeitprobleme + Koordinierungsprobleme + Verständnisprobleme
